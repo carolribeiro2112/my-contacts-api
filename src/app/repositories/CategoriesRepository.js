@@ -20,6 +20,16 @@ class CategoriesRepository {
     const [row] = await db.query('SELECT * FROM categories WHERE name = $1', [name]);
     return row;
   }
+
+  async findById(id) {
+    const [row] = await db.query('SELECT * FROM categories WHERE id = $1', [id]);
+    return row;
+  }
+
+  async delete(id) {
+    const deleteOperation = await db.query('DELETE FROM categories WHERE id = $1', [id]);
+    return deleteOperation;
+  }
 }
 
 module.exports = new CategoriesRepository();
