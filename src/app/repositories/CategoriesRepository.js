@@ -15,6 +15,11 @@ class CategoriesRepository {
 
     return row;
   }
+
+  async findByName(name) {
+    const [row] = await db.query('SELECT * FROM categories WHERE name = $1', [name]);
+    return row;
+  }
 }
 
 module.exports = new CategoriesRepository();
